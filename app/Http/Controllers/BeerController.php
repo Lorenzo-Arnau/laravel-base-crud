@@ -46,7 +46,7 @@ class BeerController extends Controller
      */
     public function show(Beer $beer)
     {
-        return view('beers.show',compact('beer'));
+        return view('/product',compact('beer'));
     }
 
     /**

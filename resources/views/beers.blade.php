@@ -15,7 +15,6 @@
             <th scope="col">Name</th>
             <th scope="col">Color</th>
             <th scope="col">Bitter(%)</th>
-            <th scope="col">Description</th>
             <th scope="col">Price</th>
             <th scope="col">Image</th>
           </tr>
@@ -24,12 +23,11 @@
             @foreach ($beers as $item)
             <tr>
               <th scope="row">{{$item->id}}</th>
-              <td>{{$item->name}}</td>
+              <td><a href="beers/{{$item->id}}">{{$item->name}}</a></td>
               <td>{{$item->color}}</td>
               <td>{{$item->bitter}}</td>
-              <td>{{$item->description}}</td>
               <td>{{$item->price}}</td>
-              <td><img src="{{$item->image}}" width="100" alt=""></td>
+              <td><img src="{{$item->image}}" width="200" alt="" ></td>
             </tr>
             @endforeach
         </tbody>

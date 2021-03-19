@@ -35,6 +35,14 @@ class BeerController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'color' => 'required',
+            'bitter' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'image' => 'required',
+            ]);
         $data=$request->all();
         $beer=new Beer();
         $beer->fill($data);

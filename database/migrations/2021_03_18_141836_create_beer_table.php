@@ -17,7 +17,7 @@ class CreateBeerTable extends Migration
             $table->id();
             $table->char('name', 100);
             $table->char('color', 100);
-            $table->tinyInteger('bitter%');
+            $table->tinyInteger('bitter');
             $table->Text('description');
             $table->float('price', 8, 2);
             $table->string('image', 2088);
@@ -33,6 +33,6 @@ class CreateBeerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('beer');
+        Schema::dropIfExists('beers');
     }
 }

@@ -15,6 +15,7 @@
             <h5 class="card-title">{{$beer->name}}</h5>
             <p class="card-text">{{$beer->description}}</p>
             <a href="/beers" class="btn btn-primary">Return</a>
+            <a href="{{route('beers.create')}}" class="btn btn-primary">Add</a>
             </div>
         </div>
     </div>

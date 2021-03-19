@@ -23,7 +23,7 @@
             @foreach ($beers as $item)
             <tr>
               <th scope="row">{{$item->id}}</th>
-              <td><a href="beers/{{$item->id}}">{{$item->name}}</a></td>
+              <td><a href="{{route('beers.show',['beer' => $item->id])}}">{{$item->name}}</a></td>
               <td>{{$item->color}}</td>
               <td>{{$item->bitter}}</td>
               <td>{{$item->price}}</td>

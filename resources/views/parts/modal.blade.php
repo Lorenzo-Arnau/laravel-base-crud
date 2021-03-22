@@ -14,7 +14,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-danger">Delete {{$beer}}</button>
+          <button type="submit" class="btn btn-danger">Delete Num:{{$beer}}</button>
         </div>
       </div>
     </div>

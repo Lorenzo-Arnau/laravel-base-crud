@@ -10021,7 +10021,13 @@ h3 {
   width: 500px;
 }
 
+.table a, .table i {
+  color: #000;
+}
+.table button {
+  margin: 25px;
+  width: 120px;
+}
 .table i {
-  font-size: 35px;
-  padding: 20px;
+  font-size: 25px;
 }

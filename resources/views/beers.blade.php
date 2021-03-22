@@ -10,7 +10,7 @@
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><img src="https://www.ledrolandart.eu/wp-content/uploads/2018/05/Logo-Birrificio.png" width="100" alt=""></a>
+        <a class="navbar-brand" href="{{route('beers.index')}}"><img src="https://www.ledrolandart.eu/wp-content/uploads/2018/05/Logo-Birrificio.png" width="100" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,8 +23,10 @@
               <a class="nav-link" href="{{route('beers.create')}}">Add</a>
             </li>
           </ul>
-          <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="form-inline" method="post" action="{{route('beers.index')}}">
+            @csrf
+            @method('POST')
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="name">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
@@ -61,7 +63,6 @@
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$item->id}}">
                         <i class="fas fa-bomb"></i>
                     </button>
-                    {{$item->id}}
                   @include('parts.modal',['beer'=> $item->id])
                   </form>
                   <button  type="button" class="btn btn-success"  href="{{route('beers.edit',['beer' => $item->id])}}">

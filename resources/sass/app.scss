@@ -23,9 +23,15 @@
     }
 }
 .table{
+    a,i{
+        color: #000;
+    }
+    button{
+        margin: 25px;
+        width: 120px;
+    }
     i{
-        font-size: 35px;
-        padding: 20px;
+        font-size: 25px;
     }
 }
 

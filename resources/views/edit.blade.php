@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="form-container">
-        @include('parts.form',['edit' => false]);
+        @include('parts.form',['edit' => true],['beer' => $beer]);
     </div>
 </body>
 </html>

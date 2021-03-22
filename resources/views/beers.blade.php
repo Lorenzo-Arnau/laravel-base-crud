@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crud & Birr</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body>
     <table class="table">
@@ -30,9 +31,20 @@
               <td>{{$item->price}}</td>
               <td><img src="{{$item->image}}" width="200" alt="" ></td>
               <td>
+                  <button  type="button" class="btn btn-primary">
                   <a href="{{route('beers.show',['beer' => $item->id])}}"><i class="fas fa-eye"></i></a>
-                  <a href=""><i class="fas fa-bomb"></i></a>
-                  <a href="{{route('beers.show',['beer' => $item->id])}}"><i class="fas fa-edit"></i></a>
+                  </button>
+                  <form action="{{route('beers.destroy',['beer' => $item->id])}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                      <i class="fas fa-bomb"></i>
+                  </button>
+                  @include('parts.modal')
+                  </form>
+                  <button  type="button" class="btn btn-success"  href="{{route('beers.edit',['beer' => $item->id])}}">
+                  <a href="{{route('beers.edit',['beer' => $item->id])}}"><i class="fas fa-edit"></i></a>
+                  </button>
               </td>
             </tr>
             @endforeach

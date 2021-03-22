@@ -68,9 +68,9 @@ class BeerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Beer $beer)
     {
-        //
+        return view('/edit',compact('beer'));
     }
 
     /**
@@ -80,9 +80,12 @@ class BeerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Beer $beer)
     {
-        //
+            $data = $request->all();
+            $beer->update($data);
+
+            return redirect()->route('beers.show',compact('beer'));
     }
 
     /**
@@ -91,8 +94,10 @@ class BeerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Beer $beer)
     {
-        //
+        dd($beer);
+        $beer->delete();
+        return redirect()->route('beers.index');
     }
 }

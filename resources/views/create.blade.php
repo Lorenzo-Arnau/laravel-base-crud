@@ -9,43 +9,52 @@
 </head>
 </head>
 <body>
-    @if ($errors->any())
-    <div class="alert alert-danger">
-    <ul>
-    @foreach ($errors->all() as $error)
-    <li>{{ $error }}</li>
-    @endforeach
-    </ul>
-    </div>
-    @endif
     <div class="form-container">
         <h2>Create a new Beer</h2>
         <form action="{{route('beers.store')}}" method="post">
             @csrf
             @method('POST')
             <div class="form-group">
-            <label for="input-name">Name</label>
-            <input type="text" class="form-control" id="input-name"  placeholder="Enter name" name="name">
+                <label for="input-name">Name</label>
+                <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : ''}}" id="input-name"  placeholder="Enter name" name="name">
+                <div class="invalid-feedback">
+                    Please choose a beer name.
+                </div>
             </div>
             <div class="form-group">
                 <label for="input-color">Color</label>
-                <input type="text" class="form-control" id="input-color"  placeholder="Enter color" name="color">
+                <input type="text" class="form-control  {{ $errors->has('color') ? 'is-invalid' : ''}}" id="input-color"  placeholder="Enter color" name="color">
+                <div class="invalid-feedback">
+                    Please choose a valid color.
+                </div>
             </div>
             <div class="form-group">
                 <label for="input-bitter">Bitter</label>
-                <input type="text" class="form-control" id="input-bitter"  placeholder="Enter bitter" name="bitter">
+                <input type="text" class="form-control  {{ $errors->has('bitter') ? 'is-invalid' : ''}}" id="input-bitter"  placeholder="Enter bitter" name="bitter">
+                <div class="invalid-feedback">
+                    Please choose a valid Bitter%.
+                </div>
             </div>
             <div class="form-group">
                 <label for="input-description">Description</label>
-                <input type="text" class="form-control" id="input-description"  placeholder="Enter description" name="description">
+                <input type="text" class="form-control  {{ $errors->has('description') ? 'is-invalid' : ''}}" id="input-description"  placeholder="Enter description" name="description">
+                <div class="invalid-feedback">
+                    Please choose a valid Description.
+                </div>
             </div>
             <div class="form-group">
                 <label for="input-price">Price</label>
-                <input type="text" class="form-control" id="input-price"  placeholder="Enter price" name="price">
+                <input type="text" class="form-control  {{ $errors->has('price') ? 'is-invalid' : ''}}" id="input-price"  placeholder="Enter price" name="price">
+                <div class="invalid-feedback">
+                    Please choose a valid price.
+                </div>
             </div>
             <div class="form-group">
                 <label for="input-image">Image</label>
-                <input type="text" class="form-control" id="input-image"  placeholder="Enter image" name="image">
+                <input type="text" class="form-control  {{ $errors->has('image') ? 'is-invalid' : ''}}" id="input-image"  placeholder="Enter image" name="image">
+                <div class="invalid-feedback">
+                    Please choose a valid Url.
+                </div>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

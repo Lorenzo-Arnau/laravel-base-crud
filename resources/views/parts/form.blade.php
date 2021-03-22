@@ -56,4 +56,5 @@
         </div>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/beers" class="btn btn-primary">Return</a>
 </form>

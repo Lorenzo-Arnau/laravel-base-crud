@@ -40,7 +40,7 @@ class BeerController extends Controller
             'color' => 'required',
             'bitter' => 'required',
             'description' => 'required',
-            'price' => 'required',
+            'price' => 'required|between:0,9999',
             'image' => 'required',
             ]);
         $data=$request->all();

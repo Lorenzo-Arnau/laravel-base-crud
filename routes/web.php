@@ -14,9 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return redirect('/beers');
+    return ('welcome');
 });
 
 
 Route::resource('beers','BeerController');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

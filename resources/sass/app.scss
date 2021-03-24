@@ -11,28 +11,4 @@
 // fontawesome
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 
-.product-container{
-    display: flex;
-    justify-content: center;
-}
-.form-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    form input{
-    width: 500px;
-    }
-}
-
-.table{
-    a,i{
-        color: #000;
-    }
-    button{
-        margin: 25px;
-        width: 120px;
-    }
-    i{
-        font-size: 25px;
-    }
-}
+@import 'style.scss';

@@ -14,13 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return ('welcome');
+    return redirect('/beers');
 });
 
 
-Route::resource('beers','BeerController');
+Route::resource('beers','BeerController')->middleware('auth');
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/beers', 'DashboardController@index')->name('index.beers');
+Route::get('/product/{beer}', 'DashboardController@show')->name('show.beers');

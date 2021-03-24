@@ -9,24 +9,38 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body>
+    <div class="flex-center position-ref full-height">
+        @if (Route::has('login'))
+            <div class="top-right links">
+                @auth
+                    <a href="{{ url('/home') }}">Home</a>
+                @else
+                    <a href="{{ route('login') }}">Login</a>
+
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}">Register</a>
+                    @endif
+                @endauth
+                @endif
+     </div>
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="{{route('beers.index')}}"><img src="https://www.ledrolandart.eu/wp-content/uploads/2018/05/Logo-Birrificio.png" width="100" alt=""></a>
+        <a class="navbar-brand" href="{{route('index.beers')}}"><img src="https://www.ledrolandart.eu/wp-content/uploads/2018/05/Logo-Birrificio.png" width="100" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="{{route('beers.index')}}">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{route('index.beers')}}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('beers.create')}}">Add</a>
             </li>
           </ul>
-          <form class="form-inline" method="post" action="{{route('beers.index')}}">
+          <form class="form-inline" method="post" action="{{route('index.beers')}}">
             @csrf
-            @method('POST')
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="name">
+            @method('GET')
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="item">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
@@ -55,22 +69,27 @@
               <td><img src="{{$item->image}}" width="200" alt="" ></td>
               <td>
                   <button  type="button" class="btn btn-primary">
-                  <a href="{{route('beers.show',['beer' => $item->id])}}"><i class="fas fa-eye"></i></a>
+                  <a href="{{route('show.beers',['beer' => $item->id])}}"><i class="fas fa-eye"></i></a>
                   </button>
+
+                  @if (Auth::check())
+
                   <form action="{{route('beers.destroy',['beer' => $item->id])}}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$item->id}}">
                         <i class="fas fa-bomb"></i>
                     </button>
-                  @include('parts.modal',['beer'=> $item->id])
-                  </form>
-                  <button  type="button" class="btn btn-success"  href="{{route('beers.edit',['beer' => $item->id])}}">
-                  <a href="{{route('beers.edit',['beer' => $item->id])}}"><i class="fas fa-edit"></i></a>
-                  </button>
-              </td>
-            </tr>
-            @endforeach
+                    @include('parts.modal',['beer'=> $item->id])
+                </form>
+                <button  type="button" class="btn btn-success"  href="{{route('beers.edit',['beer' => $item->id])}}">
+                    <a href="{{route('beers.edit',['beer' => $item->id])}}"><i class="fas fa-edit"></i></a>
+                </button>
+                @endif
+
+            </td>
+        </tr>
+        @endforeach
         </tbody>
       </table>
 
